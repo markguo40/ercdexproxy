@@ -1,0 +1,672 @@
+{
+	"basePath": "/api",
+	"consumes": [
+		"application/json"
+	],
+	"definitions": {
+		"IOrder": {
+			"properties": {
+				"id": {
+					"type": "number",
+					"format": "double",
+					"description": "Unique Identifier"
+				},
+				"dateCreated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of creation"
+				},
+				"dateUpdated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of updated"
+				},
+				"dateClosed": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date on which the order was closed through fill, cancel, etc",
+					"x-nullable": true
+				},
+				"exchangeAddress": {
+					"type": "string",
+					"description": "0x Exchange Contract Address"
+				},
+				"expirationTimeSeconds": {
+					"type": "string",
+					"description": "Unix timestamp of order expiration (in seconds)"
+				},
+				"feeRecipientAddress": {
+					"type": "string",
+					"description": "Address of the fee recipient"
+				},
+				"makerAddress": {
+					"type": "string",
+					"description": "Address of the order maker"
+				},
+				"makerFee": {
+					"type": "string",
+					"description": "Fee due from maker on order fill"
+				},
+				"makerAssetAddress": {
+					"type": "string",
+					"description": "Token address of the maker token"
+				},
+				"makerAssetData": {
+					"type": "string",
+					"description": "Encoded maker asset data"
+				},
+				"takerAssetData": {
+					"type": "string",
+					"description": "Encoded taker asset data"
+				},
+				"makerAssetAmount": {
+					"type": "string",
+					"description": "Total amount of maker token in order"
+				},
+				"salt": {
+					"type": "string",
+					"description": "Secure salt"
+				},
+				"signature": {
+					"type": "string",
+					"description": "Serialized version of the EC signature for signed orders"
+				},
+				"takerAddress": {
+					"type": "string",
+					"description": "Taker address; generally a null taker"
+				},
+				"takerFee": {
+					"type": "string",
+					"description": "Fee due from taker on order fill"
+				},
+				"takerAssetAddress": {
+					"type": "string",
+					"description": "Token address of the taker token"
+				},
+				"takerAssetAmount": {
+					"type": "string",
+					"description": "Total amount of taker token in order"
+				},
+				"remainingFillableTakerAmount": {
+					"type": "string",
+					"description": "Remaining amount that can be filled in taker tokens"
+				},
+				"remainingFillableMakerAmount": {
+					"type": "string",
+					"description": "Remaining amount that can be filled in maker tokens"
+				},
+				"orderHash": {
+					"type": "string",
+					"description": "The hash of the signed order"
+				},
+				"accountId": {
+					"type": "number",
+					"format": "double",
+					"description": "Account ID of originator",
+					"x-nullable": true
+				},
+				"state": {
+					"type": "number",
+					"format": "double",
+					"description": "State of the order: Open (0), Canceled (1), Filled (2), Expired(3), Removed(4)"
+				},
+				"price": {
+					"type": "string"
+				},
+				"senderAddress": {
+					"type": "string"
+				},
+				"system": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"id",
+				"dateCreated",
+				"dateUpdated",
+				"exchangeAddress",
+				"expirationTimeSeconds",
+				"feeRecipientAddress",
+				"makerAddress",
+				"makerFee",
+				"makerAssetAddress",
+				"makerAssetData",
+				"takerAssetData",
+				"makerAssetAmount",
+				"salt",
+				"signature",
+				"takerAddress",
+				"takerFee",
+				"takerAssetAddress",
+				"takerAssetAmount",
+				"remainingFillableTakerAmount",
+				"remainingFillableMakerAmount",
+				"orderHash",
+				"state",
+				"price",
+				"senderAddress",
+				"system"
+			],
+			"type": "object"
+		},
+		"ICreateOrderArgs": {
+			"properties": {
+				"baseSymbol": {
+					"type": "string"
+				},
+				"quoteSymbol": {
+					"type": "string"
+				},
+				"side": {
+					"type": "string",
+					"enum": [
+						"buy",
+						"sell"
+					]
+				},
+				"quantity": {
+					"type": "string"
+				},
+				"price": {
+					"type": "string"
+				},
+				"expirationTimestamp": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"baseSymbol",
+				"quoteSymbol",
+				"side",
+				"quantity",
+				"price",
+				"expirationTimestamp"
+			],
+			"type": "object"
+		},
+		"IFillReceiptLog": {
+			"properties": {
+				"id": {
+					"type": "number",
+					"format": "double",
+					"description": "Unique Identifier"
+				},
+				"dateCreated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of creation"
+				},
+				"dateUpdated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of updated"
+				},
+				"orderId": {
+					"type": "number",
+					"format": "double"
+				},
+				"receiptId": {
+					"type": "number",
+					"format": "double"
+				},
+				"takerAmount": {
+					"type": "string"
+				},
+				"makerAddress": {
+					"type": "string"
+				},
+				"isFeeOrder": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"id",
+				"dateCreated",
+				"dateUpdated",
+				"orderId",
+				"receiptId",
+				"takerAmount",
+				"makerAddress",
+				"isFeeOrder"
+			],
+			"type": "object"
+		},
+		"IFillReceipt": {
+			"properties": {
+				"id": {
+					"type": "number",
+					"format": "double",
+					"description": "Unique Identifier"
+				},
+				"dateCreated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of creation"
+				},
+				"dateUpdated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of updated"
+				},
+				"txHash": {
+					"type": "string"
+				},
+				"taker": {
+					"type": "string"
+				},
+				"status": {
+					"type": "string",
+					"description": "Receipt status: success | error | pending"
+				},
+				"side": {
+					"type": "string"
+				},
+				"takerAmount": {
+					"type": "string"
+				},
+				"makerAmount": {
+					"type": "string"
+				},
+				"price": {
+					"type": "string"
+				},
+				"baseAssetAddress": {
+					"type": "string"
+				},
+				"baseSymbol": {
+					"type": "string"
+				},
+				"quoteSymbol": {
+					"type": "string"
+				},
+				"quoteAssetAddress": {
+					"type": "string"
+				},
+				"feeAmount": {
+					"type": "string"
+				},
+				"feeAssetAddress": {
+					"type": "string"
+				},
+				"logs": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/IFillReceiptLog"
+					}
+				}
+			},
+			"required": [
+				"id",
+				"dateCreated",
+				"dateUpdated",
+				"txHash",
+				"taker",
+				"status",
+				"side",
+				"takerAmount",
+				"makerAmount",
+				"price",
+				"baseAssetAddress",
+				"baseSymbol",
+				"quoteSymbol",
+				"quoteAssetAddress",
+				"feeAmount",
+				"feeAssetAddress",
+				"logs"
+			],
+			"type": "object"
+		},
+		"IFillOrdersParams": {
+			"properties": {
+				"data": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"data"
+			],
+			"type": "object"
+		}
+	},
+	"info": {
+		"title": "ERC dEX Proxy Service",
+		"version": "1.0.3",
+		"description": "Command line app for ERC dEX Trading Automation",
+		"license": {
+			"name": "MIT"
+		}
+	},
+	"paths": {
+		"/wallet/allowances": {
+			"get": {
+				"operationId": "GetAllowance",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"tags": [
+					"Allowance"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "tokenAddress",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/wallet/allowances/unlimited": {
+			"post": {
+				"operationId": "SetUnlimitedAllowance",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Allowance"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "tokenAddress",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/wallet/allowances/remove": {
+			"post": {
+				"operationId": "RemoveAllowance",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Allowance"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "tokenAddress",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/wallet/allowances/set": {
+			"post": {
+				"operationId": "SetAllowance",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Allowance"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "tokenAddress",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "value",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/order/create": {
+			"post": {
+				"operationId": "CreateOrder",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/IOrder"
+						}
+					}
+				},
+				"description": "Create a new order",
+				"tags": [
+					"Order"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "params",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ICreateOrderArgs"
+						}
+					}
+				]
+			}
+		},
+		"/order/cancel/{orderHash}": {
+			"post": {
+				"operationId": "CancelOrder",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"description": "Cancel an existing order",
+				"tags": [
+					"Order"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "orderHash",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/order/fill": {
+			"post": {
+				"operationId": "FillOrder",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/IFillReceipt"
+						}
+					}
+				},
+				"tags": [
+					"Order"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "request",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/IFillOrdersParams"
+						}
+					}
+				]
+			}
+		},
+		"/wallet/account": {
+			"get": {
+				"operationId": "GetAccount",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"tags": [
+					"Wallet"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/wallet/balance": {
+			"get": {
+				"operationId": "GetBalance",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"tags": [
+					"Wallet"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "tokenAddress",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/wallet/wrap_ether": {
+			"post": {
+				"operationId": "WrapEther",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Wallet"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "amount",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/wallet/unwrap_ether": {
+			"post": {
+				"operationId": "UnwrapEther",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Wallet"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "amount",
+						"required": true,
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/wallet/ether_balance": {
+			"get": {
+				"operationId": "GetEtherBalance",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"tags": [
+					"Wallet"
+				],
+				"security": [],
+				"parameters": []
+			}
+		}
+	},
+	"produces": [
+		"application/json"
+	],
+	"swagger": "2.0",
+	"securityDefinitions": {},
+	"host": "localhost:8700",
+	"schemes": [
+		"http"
+	]
+}
