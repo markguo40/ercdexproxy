@@ -123,7 +123,7 @@
 					"type": "number",
 					"format": "double"
 				},
-				"per_page": {
+				"perPage": {
 					"type": "number",
 					"format": "double"
 				},
@@ -137,7 +137,7 @@
 			"required": [
 				"total",
 				"page",
-				"per_page",
+				"perPage",
 				"records"
 			],
 			"type": "object"
@@ -175,6 +175,179 @@
 			},
 			"required": [
 				"isMaintenance"
+			],
+			"type": "object"
+		},
+		"ISource": {
+			"properties": {
+				"domain": {
+					"type": "string"
+				},
+				"title": {
+					"type": "string"
+				},
+				"region": {
+					"type": "string"
+				},
+				"path": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"domain",
+				"title",
+				"region",
+				"path"
+			],
+			"type": "object"
+		},
+		"ICurrency": {
+			"properties": {
+				"code": {
+					"type": "string"
+				},
+				"title": {
+					"type": "string"
+				},
+				"slug": {
+					"type": "string"
+				},
+				"url": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"title",
+				"slug",
+				"url"
+			],
+			"type": "object"
+		},
+		"IVotes": {
+			"properties": {
+				"negative": {
+					"type": "number",
+					"format": "double"
+				},
+				"positive": {
+					"type": "number",
+					"format": "double"
+				},
+				"important": {
+					"type": "number",
+					"format": "double"
+				},
+				"liked": {
+					"type": "number",
+					"format": "double"
+				},
+				"disliked": {
+					"type": "number",
+					"format": "double"
+				},
+				"lol": {
+					"type": "number",
+					"format": "double"
+				},
+				"toxic": {
+					"type": "number",
+					"format": "double"
+				},
+				"saved": {
+					"type": "number",
+					"format": "double"
+				}
+			},
+			"required": [
+				"negative",
+				"positive",
+				"important",
+				"liked",
+				"disliked",
+				"lol",
+				"toxic",
+				"saved"
+			],
+			"type": "object"
+		},
+		"IResult": {
+			"properties": {
+				"domain": {
+					"type": "string"
+				},
+				"source": {
+					"$ref": "#/definitions/ISource"
+				},
+				"title": {
+					"type": "string"
+				},
+				"published_at": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"slug": {
+					"type": "string"
+				},
+				"currencies": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ICurrency"
+					}
+				},
+				"id": {
+					"type": "number",
+					"format": "double"
+				},
+				"created_at": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"url": {
+					"type": "string"
+				},
+				"votes": {
+					"$ref": "#/definitions/IVotes"
+				}
+			},
+			"required": [
+				"domain",
+				"source",
+				"title",
+				"published_at",
+				"slug",
+				"currencies",
+				"id",
+				"created_at",
+				"url",
+				"votes"
+			],
+			"type": "object"
+		},
+		"ICryptoPanicPostsResponse": {
+			"properties": {
+				"count": {
+					"type": "number",
+					"format": "double"
+				},
+				"next": {
+					"type": "string"
+				},
+				"previous": {
+					"type": "object",
+					"x-nullable": true
+				},
+				"results": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/IResult"
+					}
+				}
+			},
+			"required": [
+				"count",
+				"next",
+				"results"
 			],
 			"type": "object"
 		},
@@ -217,6 +390,80 @@
 				"account",
 				"label",
 				"expirationDate"
+			],
+			"type": "object"
+		},
+		"Account": {
+			"properties": {
+				"id": {
+					"type": "number",
+					"format": "double",
+					"description": "Unique Identifier"
+				},
+				"dateCreated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of creation"
+				},
+				"dateUpdated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of updated"
+				},
+				"name": {
+					"type": "string"
+				},
+				"city": {
+					"type": "string"
+				},
+				"state": {
+					"type": "string"
+				},
+				"country": {
+					"type": "string"
+				},
+				"address": {
+					"type": "string"
+				},
+				"accountType": {
+					"type": "string",
+					"enum": [
+						"relayer",
+						"market-maker",
+						"developer",
+						"trader",
+						"other"
+					],
+					"x-nullable": true
+				},
+				"phoneNumber": {
+					"type": "string",
+					"x-nullable": true
+				},
+				"referrerAccountId": {
+					"type": "number",
+					"format": "double",
+					"x-nullable": true
+				},
+				"referralWalletId": {
+					"type": "number",
+					"format": "double",
+					"x-nullable": true
+				},
+				"isConfirmed": {
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"id",
+				"dateCreated",
+				"dateUpdated",
+				"name",
+				"city",
+				"state",
+				"country",
+				"address",
+				"isConfirmed"
 			],
 			"type": "object"
 		},
@@ -335,6 +582,10 @@
 				},
 				"system": {
 					"type": "boolean"
+				},
+				"account": {
+					"$ref": "#/definitions/Account",
+					"x-nullable": true
 				}
 			},
 			"required": [
@@ -447,14 +698,10 @@
 			"properties": {
 				"order": {
 					"$ref": "#/definitions/Order"
-				},
-				"remainingFillableAmount": {
-					"type": "string"
 				}
 			},
 			"required": [
-				"order",
-				"remainingFillableAmount"
+				"order"
 			],
 			"type": "object"
 		},
@@ -468,7 +715,7 @@
 					"type": "number",
 					"format": "double"
 				},
-				"per_page": {
+				"perPage": {
 					"type": "number",
 					"format": "double"
 				},
@@ -482,7 +729,7 @@
 			"required": [
 				"total",
 				"page",
-				"per_page",
+				"perPage",
 				"records"
 			],
 			"type": "object"
@@ -510,6 +757,35 @@
 			],
 			"type": "object"
 		},
+		"IFeeRecipientsResponse": {
+			"properties": {
+				"total": {
+					"type": "number",
+					"format": "double"
+				},
+				"page": {
+					"type": "number",
+					"format": "double"
+				},
+				"perPage": {
+					"type": "number",
+					"format": "double"
+				},
+				"records": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"total",
+				"page",
+				"perPage",
+				"records"
+			],
+			"type": "object"
+		},
 		"IOrderbookSide": {
 			"properties": {
 				"total": {
@@ -520,7 +796,7 @@
 					"type": "number",
 					"format": "double"
 				},
-				"per_page": {
+				"perPage": {
 					"type": "number",
 					"format": "double"
 				},
@@ -534,7 +810,7 @@
 			"required": [
 				"total",
 				"page",
-				"per_page",
+				"perPage",
 				"records"
 			],
 			"type": "object"
@@ -1154,7 +1430,7 @@
 					"type": "number",
 					"format": "double"
 				},
-				"per_page": {
+				"perPage": {
 					"type": "number",
 					"format": "double"
 				},
@@ -1168,7 +1444,7 @@
 			"required": [
 				"total",
 				"page",
-				"per_page",
+				"perPage",
 				"records"
 			],
 			"type": "object"
@@ -1481,7 +1757,7 @@
 					{
 						"default": 100,
 						"in": "query",
-						"name": "per_page",
+						"name": "perPage",
 						"required": false,
 						"format": "double",
 						"type": "number"
@@ -1531,6 +1807,34 @@
 				],
 				"security": [],
 				"parameters": []
+			}
+		},
+		"/news/cryptopanic/{symbol}": {
+			"get": {
+				"operationId": "GetCryptoPanicNews",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/ICryptoPanicPostsResponse"
+						}
+					}
+				},
+				"tags": [
+					"News"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "symbol",
+						"required": true,
+						"type": "string"
+					}
+				]
 			}
 		},
 		"/notifications": {
@@ -1635,7 +1939,7 @@
 						"default": 100,
 						"description": "Page size",
 						"in": "query",
-						"name": "per_page",
+						"name": "perPage",
 						"required": false,
 						"format": "double",
 						"type": "number"
@@ -1718,18 +2022,14 @@
 						"type": "string"
 					},
 					{
-						"default": "ERC20",
-						"description": "Maker asset type (only ERC20 supported)",
 						"in": "query",
-						"name": "makerAssetType",
+						"name": "makerAssetProxyId",
 						"required": false,
 						"type": "string"
 					},
 					{
-						"default": "ERC20",
-						"description": "Taker asset type (only ERC20 supported)",
 						"in": "query",
-						"name": "takerAssetType",
+						"name": "takerAssetProxyId",
 						"required": false,
 						"type": "string"
 					},
@@ -1836,6 +2136,27 @@
 				]
 			}
 		},
+		"/fee_recipients": {
+			"get": {
+				"operationId": "GetFeeRecipients",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/IFeeRecipientsResponse"
+						}
+					}
+				},
+				"tags": [
+					"Orders"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
 		"/orderbook": {
 			"get": {
 				"operationId": "GetOrderbook",
@@ -1870,7 +2191,7 @@
 					{
 						"default": 100,
 						"in": "query",
-						"name": "per_page",
+						"name": "perPage",
 						"required": false,
 						"format": "double",
 						"type": "number"
@@ -2163,7 +2484,7 @@
 						"default": 100,
 						"description": "Page size",
 						"in": "query",
-						"name": "per_page",
+						"name": "perPage",
 						"required": false,
 						"format": "double",
 						"type": "number"

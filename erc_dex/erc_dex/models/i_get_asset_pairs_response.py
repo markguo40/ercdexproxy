@@ -42,7 +42,7 @@ class IGetAssetPairsResponse(object):
     attribute_map = {
         'total': 'total',
         'page': 'page',
-        'per_page': 'per_page',
+        'per_page': 'perPage',
         'records': 'records'
     }
 

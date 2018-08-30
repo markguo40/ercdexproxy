@@ -73,9 +73,11 @@ Class | Method | HTTP request | Description
 *AssetPairsApi* | [**get_asset_pairs**](docs/AssetPairsApi.md#get_asset_pairs) | **GET** /asset_pairs | 
 *NetworksApi* | [**get_supported_network**](docs/NetworksApi.md#get_supported_network) | **GET** /networks | 
 *NetworksApi* | [**is_maintenance**](docs/NetworksApi.md#is_maintenance) | **GET** /networks/maintenance | 
+*NewsApi* | [**get_crypto_panic_news**](docs/NewsApi.md#get_crypto_panic_news) | **GET** /news/cryptopanic/{symbol} | 
 *NotificationsApi* | [**get_notifications**](docs/NotificationsApi.md#get_notifications) | **GET** /notifications | 
 *OrdersApi* | [**cancel_orders**](docs/OrdersApi.md#cancel_orders) | **POST** /orders/cancel | 
 *OrdersApi* | [**create_order**](docs/OrdersApi.md#create_order) | **POST** /orders | 
+*OrdersApi* | [**get_fee_recipients**](docs/OrdersApi.md#get_fee_recipients) | **GET** /fee_recipients | 
 *OrdersApi* | [**get_order_by_hash**](docs/OrdersApi.md#get_order_by_hash) | **GET** /order/{orderHash} | 
 *OrdersApi* | [**get_order_config**](docs/OrdersApi.md#get_order_config) | **GET** /order_config | 
 *OrdersApi* | [**get_orderbook**](docs/OrdersApi.md#get_orderbook) | **GET** /orderbook | 
@@ -94,14 +96,18 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Account](docs/Account.md)
  - [FillReceipt](docs/FillReceipt.md)
  - [FillReceiptLog](docs/FillReceiptLog.md)
  - [IAggregatedOrderData](docs/IAggregatedOrderData.md)
  - [ICancelOrderData](docs/ICancelOrderData.md)
  - [ICancelOrderResult](docs/ICancelOrderResult.md)
  - [ICancelOrdersRequest](docs/ICancelOrdersRequest.md)
+ - [ICryptoPanicPostsResponse](docs/ICryptoPanicPostsResponse.md)
+ - [ICurrency](docs/ICurrency.md)
  - [IExtendedOrderFill](docs/IExtendedOrderFill.md)
  - [IFeeData](docs/IFeeData.md)
+ - [IFeeRecipientsResponse](docs/IFeeRecipientsResponse.md)
  - [IFillQuote](docs/IFillQuote.md)
  - [IFillRequest](docs/IFillRequest.md)
  - [IGetAssetPairsResponse](docs/IGetAssetPairsResponse.md)
@@ -123,10 +129,13 @@ Class | Method | HTTP request | Description
  - [IOrderbookSide](docs/IOrderbookSide.md)
  - [IPriceLevel](docs/IPriceLevel.md)
  - [IRequestFillRequest](docs/IRequestFillRequest.md)
+ - [IResult](docs/IResult.md)
+ - [ISource](docs/ISource.md)
  - [IToken](docs/IToken.md)
  - [ITokenPair](docs/ITokenPair.md)
  - [ITokenTicker](docs/ITokenTicker.md)
  - [ITradingViewLog](docs/ITradingViewLog.md)
+ - [IVotes](docs/IVotes.md)
  - [Notification](docs/Notification.md)
  - [Order](docs/Order.md)
  - [TradeHistoryLog](docs/TradeHistoryLog.md)

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**cancel_orders**](OrdersApi.md#cancel_orders) | **POST** /orders/cancel | 
 [**create_order**](OrdersApi.md#create_order) | **POST** /orders | 
+[**get_fee_recipients**](OrdersApi.md#get_fee_recipients) | **GET** /fee_recipients | 
 [**get_order_by_hash**](OrdersApi.md#get_order_by_hash) | **GET** /order/{orderHash} | 
 [**get_order_config**](OrdersApi.md#get_order_config) | **GET** /order_config | 
 [**get_orderbook**](OrdersApi.md#get_orderbook) | **GET** /orderbook | 
@@ -94,6 +95,47 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Order**](Order.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_fee_recipients**
+> IFeeRecipientsResponse get_fee_recipients()
+
+
+
+### Example
+```python
+from __future__ import print_function
+import time
+import erc_dex
+from erc_dex.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = erc_dex.OrdersApi()
+
+try:
+    api_response = api_instance.get_fee_recipients()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling OrdersApi->get_fee_recipients: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**IFeeRecipientsResponse**](IFeeRecipientsResponse.md)
 
 ### Authorization
 
@@ -262,7 +304,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_orders**
-> IGetOrdersResponse get_orders(open=open, page=page, per_page=per_page, exchange_address=exchange_address, fee_recipient_address=fee_recipient_address, taker_asset_data=taker_asset_data, maker_asset_data=maker_asset_data, sender_address=sender_address, trader_asset_data=trader_asset_data, trader_address=trader_address, taker_asset_address=taker_asset_address, taker_address=taker_address, maker_asset_address=maker_asset_address, maker_address=maker_address, maker_asset_type=maker_asset_type, taker_asset_type=taker_asset_type, pair=pair)
+> IGetOrdersResponse get_orders(open=open, page=page, per_page=per_page, exchange_address=exchange_address, fee_recipient_address=fee_recipient_address, taker_asset_data=taker_asset_data, maker_asset_data=maker_asset_data, sender_address=sender_address, trader_asset_data=trader_asset_data, trader_address=trader_address, taker_asset_address=taker_asset_address, taker_address=taker_address, maker_asset_address=maker_asset_address, maker_address=maker_address, maker_asset_proxy_id=maker_asset_proxy_id, taker_asset_proxy_id=taker_asset_proxy_id, pair=pair)
 
 
 
@@ -292,12 +334,12 @@ taker_asset_address = 'taker_asset_address_example' # str | Token address of tak
 taker_address = 'taker_address_example' # str | Address of order taker (optional)
 maker_asset_address = 'maker_asset_address_example' # str | Token address of maker asset (optional)
 maker_address = 'maker_address_example' # str | Address of order maker (optional)
-maker_asset_type = 'ERC20' # str | Maker asset type (only ERC20 supported) (optional) (default to ERC20)
-taker_asset_type = 'ERC20' # str | Taker asset type (only ERC20 supported) (optional) (default to ERC20)
+maker_asset_proxy_id = 'maker_asset_proxy_id_example' # str |  (optional)
+taker_asset_proxy_id = 'taker_asset_proxy_id_example' # str |  (optional)
 pair = 'pair_example' # str |  (optional)
 
 try:
-    api_response = api_instance.get_orders(open=open, page=page, per_page=per_page, exchange_address=exchange_address, fee_recipient_address=fee_recipient_address, taker_asset_data=taker_asset_data, maker_asset_data=maker_asset_data, sender_address=sender_address, trader_asset_data=trader_asset_data, trader_address=trader_address, taker_asset_address=taker_asset_address, taker_address=taker_address, maker_asset_address=maker_asset_address, maker_address=maker_address, maker_asset_type=maker_asset_type, taker_asset_type=taker_asset_type, pair=pair)
+    api_response = api_instance.get_orders(open=open, page=page, per_page=per_page, exchange_address=exchange_address, fee_recipient_address=fee_recipient_address, taker_asset_data=taker_asset_data, maker_asset_data=maker_asset_data, sender_address=sender_address, trader_asset_data=trader_asset_data, trader_address=trader_address, taker_asset_address=taker_asset_address, taker_address=taker_address, maker_asset_address=maker_asset_address, maker_address=maker_address, maker_asset_proxy_id=maker_asset_proxy_id, taker_asset_proxy_id=taker_asset_proxy_id, pair=pair)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OrdersApi->get_orders: %s\n" % e)
@@ -321,8 +363,8 @@ Name | Type | Description  | Notes
  **taker_address** | **str**| Address of order taker | [optional] 
  **maker_asset_address** | **str**| Token address of maker asset | [optional] 
  **maker_address** | **str**| Address of order maker | [optional] 
- **maker_asset_type** | **str**| Maker asset type (only ERC20 supported) | [optional] [default to ERC20]
- **taker_asset_type** | **str**| Taker asset type (only ERC20 supported) | [optional] [default to ERC20]
+ **maker_asset_proxy_id** | **str**|  | [optional] 
+ **taker_asset_proxy_id** | **str**|  | [optional] 
  **pair** | **str**|  | [optional] 
 
 ### Return type

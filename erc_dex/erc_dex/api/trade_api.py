@@ -495,7 +495,7 @@ class TradeApi(object):
         if 'page' in params:
             query_params.append(('page', params['page']))  # noqa: E501
         if 'per_page' in params:
-            query_params.append(('per_page', params['per_page']))  # noqa: E501
+            query_params.append(('perPage', params['per_page']))  # noqa: E501
         if 'taker_address' in params:
             query_params.append(('taker_address', params['taker_address']))  # noqa: E501
         if 'pair' in params:

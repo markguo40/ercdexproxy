@@ -33,24 +33,20 @@ class IOrderData(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'order': 'Order',
-        'remaining_fillable_amount': 'str'
+        'order': 'Order'
     }
 
     attribute_map = {
-        'order': 'order',
-        'remaining_fillable_amount': 'remainingFillableAmount'
+        'order': 'order'
     }
 
-    def __init__(self, order=None, remaining_fillable_amount=None):  # noqa: E501
+    def __init__(self, order=None):  # noqa: E501
         """IOrderData - a model defined in Swagger"""  # noqa: E501
 
         self._order = None
-        self._remaining_fillable_amount = None
         self.discriminator = None
 
         self.order = order
-        self.remaining_fillable_amount = remaining_fillable_amount
 
     @property
     def order(self):
@@ -74,29 +70,6 @@ class IOrderData(object):
             raise ValueError("Invalid value for `order`, must not be `None`")  # noqa: E501
 
         self._order = order
-
-    @property
-    def remaining_fillable_amount(self):
-        """Gets the remaining_fillable_amount of this IOrderData.  # noqa: E501
-
-
-        :return: The remaining_fillable_amount of this IOrderData.  # noqa: E501
-        :rtype: str
-        """
-        return self._remaining_fillable_amount
-
-    @remaining_fillable_amount.setter
-    def remaining_fillable_amount(self, remaining_fillable_amount):
-        """Sets the remaining_fillable_amount of this IOrderData.
-
-
-        :param remaining_fillable_amount: The remaining_fillable_amount of this IOrderData.  # noqa: E501
-        :type: str
-        """
-        if remaining_fillable_amount is None:
-            raise ValueError("Invalid value for `remaining_fillable_amount`, must not be `None`")  # noqa: E501
-
-        self._remaining_fillable_amount = remaining_fillable_amount
 
     def to_dict(self):
         """Returns the model properties as a dict"""
