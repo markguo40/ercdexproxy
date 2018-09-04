@@ -11,6 +11,7 @@ from erc_dex.api.notifications_api import NotificationsApi
 from erc_dex.api.orders_api import OrdersApi
 from erc_dex.api.reports_api import ReportsApi
 from erc_dex.api.ticker_api import TickerApi
+from erc_dex.api.token_request_api import TokenRequestApi
 from erc_dex.api.trade_api import TradeApi
 from erc_dex.api.trade_history_logs_api import TradeHistoryLogsApi
 from erc_dex.api.trading_view_api import TradingViewApi

@@ -1,6 +1,6 @@
 # erc_dex.OrdersApi
 
-All URIs are relative to *https://api.ercdex.com/api/v1*
+All URIs are relative to *https://app.ercdex.com/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -334,8 +334,8 @@ taker_asset_address = 'taker_asset_address_example' # str | Token address of tak
 taker_address = 'taker_address_example' # str | Address of order taker (optional)
 maker_asset_address = 'maker_asset_address_example' # str | Token address of maker asset (optional)
 maker_address = 'maker_address_example' # str | Address of order maker (optional)
-maker_asset_proxy_id = 'maker_asset_proxy_id_example' # str |  (optional)
-taker_asset_proxy_id = 'taker_asset_proxy_id_example' # str |  (optional)
+maker_asset_proxy_id = 'maker_asset_proxy_id_example' # str | Maker asset proxy ID (ERC20 proxy only (optional)
+taker_asset_proxy_id = 'taker_asset_proxy_id_example' # str | Taker asset proxy ID (ERC20 proxy only) (optional)
 pair = 'pair_example' # str |  (optional)
 
 try:
@@ -363,8 +363,8 @@ Name | Type | Description  | Notes
  **taker_address** | **str**| Address of order taker | [optional] 
  **maker_asset_address** | **str**| Token address of maker asset | [optional] 
  **maker_address** | **str**| Address of order maker | [optional] 
- **maker_asset_proxy_id** | **str**|  | [optional] 
- **taker_asset_proxy_id** | **str**|  | [optional] 
+ **maker_asset_proxy_id** | **str**| Maker asset proxy ID (ERC20 proxy only | [optional] 
+ **taker_asset_proxy_id** | **str**| Taker asset proxy ID (ERC20 proxy only) | [optional] 
  **pair** | **str**|  | [optional] 
 
 ### Return type

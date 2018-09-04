@@ -65,7 +65,7 @@ except ApiException as e:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.ercdex.com/api/v1*
+All URIs are relative to *https://app.ercdex.com/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -74,6 +74,7 @@ Class | Method | HTTP request | Description
 *NetworksApi* | [**get_supported_network**](docs/NetworksApi.md#get_supported_network) | **GET** /networks | 
 *NetworksApi* | [**is_maintenance**](docs/NetworksApi.md#is_maintenance) | **GET** /networks/maintenance | 
 *NewsApi* | [**get_crypto_panic_news**](docs/NewsApi.md#get_crypto_panic_news) | **GET** /news/cryptopanic/{symbol} | 
+*NewsApi* | [**get_erc_dex_news**](docs/NewsApi.md#get_erc_dex_news) | **GET** /news/ercdex | 
 *NotificationsApi* | [**get_notifications**](docs/NotificationsApi.md#get_notifications) | **GET** /notifications | 
 *OrdersApi* | [**cancel_orders**](docs/OrdersApi.md#cancel_orders) | **POST** /orders/cancel | 
 *OrdersApi* | [**create_order**](docs/OrdersApi.md#create_order) | **POST** /orders | 
@@ -84,6 +85,7 @@ Class | Method | HTTP request | Description
 *OrdersApi* | [**get_orders**](docs/OrdersApi.md#get_orders) | **GET** /orders | 
 *ReportsApi* | [**get_ticker_data**](docs/ReportsApi.md#get_ticker_data) | **GET** /reports/ticker | 
 *TickerApi* | [**get_ticker**](docs/TickerApi.md#get_ticker) | **GET** /ticker | 
+*TokenRequestApi* | [**create_token_request**](docs/TokenRequestApi.md#create_token_request) | **POST** /token_requests | 
 *TradeApi* | [**fill**](docs/TradeApi.md#fill) | **POST** /trade/fill | 
 *TradeApi* | [**get_market_quote**](docs/TradeApi.md#get_market_quote) | **POST** /trade/market_quote | 
 *TradeApi* | [**get_market_quote_by_percent**](docs/TradeApi.md#get_market_quote_by_percent) | **POST** /trade/market_quote_by_percent | 
@@ -113,6 +115,7 @@ Class | Method | HTTP request | Description
  - [IGetAssetPairsResponse](docs/IGetAssetPairsResponse.md)
  - [IGetMarketOrderQuoteByPercentageRequest](docs/IGetMarketOrderQuoteByPercentageRequest.md)
  - [IGetMarketOrderQuoteRequest](docs/IGetMarketOrderQuoteRequest.md)
+ - [IGetNewsItemsResponse](docs/IGetNewsItemsResponse.md)
  - [IGetOrdersResponse](docs/IGetOrdersResponse.md)
  - [IGetReceiptsResponse](docs/IGetReceiptsResponse.md)
  - [IGetTradeHistoryLogsResponse](docs/IGetTradeHistoryLogsResponse.md)
@@ -133,9 +136,11 @@ Class | Method | HTTP request | Description
  - [ISource](docs/ISource.md)
  - [IToken](docs/IToken.md)
  - [ITokenPair](docs/ITokenPair.md)
+ - [ITokenRequestRequest](docs/ITokenRequestRequest.md)
  - [ITokenTicker](docs/ITokenTicker.md)
  - [ITradingViewLog](docs/ITradingViewLog.md)
  - [IVotes](docs/IVotes.md)
+ - [NewsItem](docs/NewsItem.md)
  - [Notification](docs/Notification.md)
  - [Order](docs/Order.md)
  - [TradeHistoryLog](docs/TradeHistoryLog.md)

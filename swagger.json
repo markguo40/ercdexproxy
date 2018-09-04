@@ -351,6 +351,84 @@
 			],
 			"type": "object"
 		},
+		"NewsItem": {
+			"properties": {
+				"id": {
+					"type": "number",
+					"format": "double",
+					"description": "Unique Identifier"
+				},
+				"dateCreated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of creation"
+				},
+				"dateUpdated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of updated"
+				},
+				"url": {
+					"type": "string"
+				},
+				"title": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"featured": {
+					"type": "boolean"
+				},
+				"source": {
+					"type": "string",
+					"enum": [
+						"medium",
+						"twitter"
+					]
+				}
+			},
+			"required": [
+				"id",
+				"dateCreated",
+				"dateUpdated",
+				"url",
+				"title",
+				"description",
+				"featured",
+				"source"
+			],
+			"type": "object"
+		},
+		"IGetNewsItemsResponse": {
+			"properties": {
+				"total": {
+					"type": "number",
+					"format": "double"
+				},
+				"page": {
+					"type": "number",
+					"format": "double"
+				},
+				"perPage": {
+					"type": "number",
+					"format": "double"
+				},
+				"records": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/NewsItem"
+					}
+				}
+			},
+			"required": [
+				"total",
+				"page",
+				"perPage",
+				"records"
+			],
+			"type": "object"
+		},
 		"Notification": {
 			"description": "A notification meant for consumption by clients",
 			"properties": {
@@ -972,6 +1050,25 @@
 				"quoteVolume",
 				"percentChange",
 				"timestamp"
+			],
+			"type": "object"
+		},
+		"ITokenRequestRequest": {
+			"properties": {
+				"symbol": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string",
+					"x-nullable": true
+				},
+				"message": {
+					"type": "string",
+					"x-nullable": true
+				}
+			},
+			"required": [
+				"symbol"
 			],
 			"type": "object"
 		},
@@ -1837,6 +1934,44 @@
 				]
 			}
 		},
+		"/news/ercdex": {
+			"get": {
+				"operationId": "GetErcDexNews",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/IGetNewsItemsResponse"
+						}
+					}
+				},
+				"tags": [
+					"News"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"default": 1,
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"format": "double",
+						"type": "number"
+					},
+					{
+						"default": 20,
+						"in": "query",
+						"name": "perPage",
+						"required": false,
+						"format": "double",
+						"type": "number"
+					}
+				]
+			}
+		},
 		"/notifications": {
 			"get": {
 				"operationId": "GetNotifications",
@@ -2022,12 +2157,14 @@
 						"type": "string"
 					},
 					{
+						"description": "Maker asset proxy ID (ERC20 proxy only",
 						"in": "query",
 						"name": "makerAssetProxyId",
 						"required": false,
 						"type": "string"
 					},
 					{
+						"description": "Taker asset proxy ID (ERC20 proxy only)",
 						"in": "query",
 						"name": "takerAssetProxyId",
 						"required": false,
@@ -2294,6 +2431,33 @@
 						"name": "granularity",
 						"required": false,
 						"type": "string"
+					}
+				]
+			}
+		},
+		"/token_requests": {
+			"post": {
+				"operationId": "CreateTokenRequest",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"TokenRequest"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "request",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ITokenRequestRequest"
+						}
 					}
 				]
 			}
@@ -2741,7 +2905,7 @@
 	],
 	"swagger": "2.0",
 	"securityDefinitions": {},
-	"host": "api.ercdex.com",
+	"host": "app.ercdex.com",
 	"schemes": [
 		"https"
 	]

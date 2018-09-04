@@ -1,18 +1,16 @@
-# erc_dex.NotificationsApi
+# erc_dex.TokenRequestApi
 
 All URIs are relative to *https://app.ercdex.com/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_notifications**](NotificationsApi.md#get_notifications) | **GET** /notifications | 
+[**create_token_request**](TokenRequestApi.md#create_token_request) | **POST** /token_requests | 
 
 
-# **get_notifications**
-> list[Notification] get_notifications(account)
+# **create_token_request**
+> create_token_request(request)
 
 
-
-Get active notifications for an account
 
 ### Example
 ```python
@@ -23,25 +21,24 @@ from erc_dex.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = erc_dex.NotificationsApi()
-account = 'account_example' # str | 
+api_instance = erc_dex.TokenRequestApi()
+request = erc_dex.ITokenRequestRequest() # ITokenRequestRequest | 
 
 try:
-    api_response = api_instance.get_notifications(account)
-    pprint(api_response)
+    api_instance.create_token_request(request)
 except ApiException as e:
-    print("Exception when calling NotificationsApi->get_notifications: %s\n" % e)
+    print("Exception when calling TokenRequestApi->create_token_request: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **account** | **str**|  | 
+ **request** | [**ITokenRequestRequest**](ITokenRequestRequest.md)|  | 
 
 ### Return type
 
-[**list[Notification]**](Notification.md)
+void (empty response body)
 
 ### Authorization
 

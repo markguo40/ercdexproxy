@@ -1,6 +1,6 @@
 # erc_dex.AggregatedOrdersApi
 
-All URIs are relative to *https://api.ercdex.com/api/v1*
+All URIs are relative to *https://app.ercdex.com/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

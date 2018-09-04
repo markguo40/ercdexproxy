@@ -32,6 +32,7 @@ from erc_dex.models.i_fill_request import IFillRequest
 from erc_dex.models.i_get_asset_pairs_response import IGetAssetPairsResponse
 from erc_dex.models.i_get_market_order_quote_by_percentage_request import IGetMarketOrderQuoteByPercentageRequest
 from erc_dex.models.i_get_market_order_quote_request import IGetMarketOrderQuoteRequest
+from erc_dex.models.i_get_news_items_response import IGetNewsItemsResponse
 from erc_dex.models.i_get_orders_response import IGetOrdersResponse
 from erc_dex.models.i_get_receipts_response import IGetReceiptsResponse
 from erc_dex.models.i_get_trade_history_logs_response import IGetTradeHistoryLogsResponse
@@ -52,9 +53,11 @@ from erc_dex.models.i_result import IResult
 from erc_dex.models.i_source import ISource
 from erc_dex.models.i_token import IToken
 from erc_dex.models.i_token_pair import ITokenPair
+from erc_dex.models.i_token_request_request import ITokenRequestRequest
 from erc_dex.models.i_token_ticker import ITokenTicker
 from erc_dex.models.i_trading_view_log import ITradingViewLog
 from erc_dex.models.i_votes import IVotes
+from erc_dex.models.news_item import NewsItem
 from erc_dex.models.notification import Notification
 from erc_dex.models.order import Order
 from erc_dex.models.trade_history_log import TradeHistoryLog

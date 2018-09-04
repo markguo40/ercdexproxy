@@ -701,8 +701,8 @@ class OrdersApi(object):
         :param str taker_address: Address of order taker
         :param str maker_asset_address: Token address of maker asset
         :param str maker_address: Address of order maker
-        :param str maker_asset_proxy_id:
-        :param str taker_asset_proxy_id:
+        :param str maker_asset_proxy_id: Maker asset proxy ID (ERC20 proxy only
+        :param str taker_asset_proxy_id: Taker asset proxy ID (ERC20 proxy only)
         :param str pair:
         :return: IGetOrdersResponse
                  If the method is called asynchronously,
@@ -739,8 +739,8 @@ class OrdersApi(object):
         :param str taker_address: Address of order taker
         :param str maker_asset_address: Token address of maker asset
         :param str maker_address: Address of order maker
-        :param str maker_asset_proxy_id:
-        :param str taker_asset_proxy_id:
+        :param str maker_asset_proxy_id: Maker asset proxy ID (ERC20 proxy only
+        :param str taker_asset_proxy_id: Taker asset proxy ID (ERC20 proxy only)
         :param str pair:
         :return: IGetOrdersResponse
                  If the method is called asynchronously,
