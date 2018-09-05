@@ -24,10 +24,7 @@ from erc_dex.models.i_cancel_order_result import ICancelOrderResult
 from erc_dex.models.i_cancel_orders_request import ICancelOrdersRequest
 from erc_dex.models.i_crypto_panic_posts_response import ICryptoPanicPostsResponse
 from erc_dex.models.i_currency import ICurrency
-from erc_dex.models.i_extended_order_fill import IExtendedOrderFill
-from erc_dex.models.i_fee_data import IFeeData
 from erc_dex.models.i_fee_recipients_response import IFeeRecipientsResponse
-from erc_dex.models.i_fill_quote import IFillQuote
 from erc_dex.models.i_fill_request import IFillRequest
 from erc_dex.models.i_get_asset_pairs_response import IGetAssetPairsResponse
 from erc_dex.models.i_get_market_order_quote_by_percentage_request import IGetMarketOrderQuoteByPercentageRequest
@@ -57,6 +54,8 @@ from erc_dex.models.i_token_request_request import ITokenRequestRequest
 from erc_dex.models.i_token_ticker import ITokenTicker
 from erc_dex.models.i_trading_view_log import ITradingViewLog
 from erc_dex.models.i_votes import IVotes
+from erc_dex.models.market_quote import MarketQuote
+from erc_dex.models.market_quote_fill import MarketQuoteFill
 from erc_dex.models.news_item import NewsItem
 from erc_dex.models.notification import Notification
 from erc_dex.models.order import Order

@@ -252,7 +252,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **request_fill**
-> IFillQuote request_fill(request)
+> MarketQuote request_fill(request)
 
 
 
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IFillQuote**](IFillQuote.md)
+[**MarketQuote**](MarketQuote.md)
 
 ### Authorization
 

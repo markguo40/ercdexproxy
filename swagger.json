@@ -1072,53 +1072,6 @@
 			],
 			"type": "object"
 		},
-		"FillReceiptLog": {
-			"properties": {
-				"id": {
-					"type": "number",
-					"format": "double",
-					"description": "Unique Identifier"
-				},
-				"dateCreated": {
-					"type": "string",
-					"format": "date-time",
-					"description": "Date of creation"
-				},
-				"dateUpdated": {
-					"type": "string",
-					"format": "date-time",
-					"description": "Date of updated"
-				},
-				"orderId": {
-					"type": "number",
-					"format": "double"
-				},
-				"receiptId": {
-					"type": "number",
-					"format": "double"
-				},
-				"takerAmount": {
-					"type": "string"
-				},
-				"makerAddress": {
-					"type": "string"
-				},
-				"isFeeOrder": {
-					"type": "boolean"
-				}
-			},
-			"required": [
-				"id",
-				"dateCreated",
-				"dateUpdated",
-				"orderId",
-				"receiptId",
-				"takerAmount",
-				"makerAddress",
-				"isFeeOrder"
-			],
-			"type": "object"
-		},
 		"FillReceipt": {
 			"properties": {
 				"id": {
@@ -1213,6 +1166,57 @@
 			],
 			"type": "object"
 		},
+		"FillReceiptLog": {
+			"properties": {
+				"id": {
+					"type": "number",
+					"format": "double",
+					"description": "Unique Identifier"
+				},
+				"dateCreated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of creation"
+				},
+				"dateUpdated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of updated"
+				},
+				"orderId": {
+					"type": "number",
+					"format": "double"
+				},
+				"receiptId": {
+					"type": "number",
+					"format": "double"
+				},
+				"takerAmount": {
+					"type": "string"
+				},
+				"makerAddress": {
+					"type": "string"
+				},
+				"isFeeOrder": {
+					"type": "boolean"
+				},
+				"receipt": {
+					"$ref": "#/definitions/FillReceipt",
+					"x-nullable": true
+				}
+			},
+			"required": [
+				"id",
+				"dateCreated",
+				"dateUpdated",
+				"orderId",
+				"receiptId",
+				"takerAmount",
+				"makerAddress",
+				"isFeeOrder"
+			],
+			"type": "object"
+		},
 		"IFillRequest": {
 			"properties": {
 				"quoteId": {
@@ -1231,8 +1235,33 @@
 			],
 			"type": "object"
 		},
-		"IExtendedOrderFill": {
+		"MarketQuoteFill": {
 			"properties": {
+				"id": {
+					"type": "number",
+					"format": "double",
+					"description": "Unique Identifier"
+				},
+				"dateCreated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of creation"
+				},
+				"dateUpdated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of updated"
+				},
+				"orderId": {
+					"type": "number",
+					"format": "double",
+					"description": "Computed hash verifying the authenticity of the order"
+				},
+				"quoteId": {
+					"type": "number",
+					"format": "double",
+					"description": "Computed hash verifying the authenticity of the order"
+				},
 				"orderHash": {
 					"type": "string",
 					"description": "Computed hash verifying the authenticity of the order"
@@ -1240,59 +1269,35 @@
 				"takerAmount": {
 					"type": "string",
 					"description": "Taker amount in base units to fill from this order"
-				},
-				"order": {
-					"$ref": "#/definitions/Order"
 				}
 			},
 			"required": [
-				"orderHash",
-				"takerAmount",
-				"order"
-			],
-			"type": "object"
-		},
-		"IFeeData": {
-			"properties": {
-				"orderId": {
-					"type": "number",
-					"format": "double",
-					"description": "ID of order used to pay the fee"
-				},
-				"tokenSymbol": {
-					"type": "string",
-					"description": "Symbol of the token used to pay fees"
-				},
-				"amount": {
-					"type": "string",
-					"description": "Base amount of fees paid"
-				},
-				"networkAmount": {
-					"type": "string",
-					"description": "Base amount of fees paid to cover network fees"
-				}
-			},
-			"required": [
+				"id",
+				"dateCreated",
+				"dateUpdated",
 				"orderId",
-				"tokenSymbol",
-				"amount",
-				"networkAmount"
+				"quoteId",
+				"orderHash",
+				"takerAmount"
 			],
 			"type": "object"
 		},
-		"IFillQuote": {
+		"MarketQuote": {
 			"properties": {
 				"id": {
 					"type": "number",
 					"format": "double",
-					"description": "Unique quote identifier"
+					"description": "Unique Identifier"
 				},
-				"fills": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/IExtendedOrderFill"
-					},
-					"description": "Collection of fills"
+				"dateCreated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of creation"
+				},
+				"dateUpdated": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Date of updated"
 				},
 				"salt": {
 					"type": "string",
@@ -1302,18 +1307,9 @@
 					"type": "string",
 					"description": "Pre-calculated hex to sign"
 				},
-				"taker": {
+				"takerAddress": {
 					"type": "string",
 					"description": "Order taker"
-				},
-				"feeData": {
-					"$ref": "#/definitions/IFeeData",
-					"description": "Contains information regarding any applicable fees",
-					"x-nullable": true
-				},
-				"tokenPair": {
-					"$ref": "#/definitions/ITokenPair",
-					"description": "Trade token pair"
 				},
 				"price": {
 					"type": "string",
@@ -1330,19 +1326,65 @@
 				"takerAssetAddress": {
 					"type": "string",
 					"description": "Address of taker token"
+				},
+				"expiration": {
+					"type": "number",
+					"format": "double",
+					"description": "Expiration - unix timestamp in seconds"
+				},
+				"feeTokenSymbol": {
+					"type": "string",
+					"description": "Symbol of the token used to pay fees"
+				},
+				"feeAmount": {
+					"type": "string",
+					"description": "Amount of fees paid in wei"
+				},
+				"networkFeeAmount": {
+					"type": "string",
+					"description": "Amount of fees paid to cover network fees in wei"
+				},
+				"state": {
+					"type": "number",
+					"format": "double",
+					"description": "State of the quote (Open [0], Expired [1], Invalid [2], Redeemed [3])"
+				},
+				"feeOrderId": {
+					"type": "number",
+					"format": "double",
+					"description": "ID of order used to pay fees",
+					"x-nullable": true
+				},
+				"feeOrder": {
+					"$ref": "#/definitions/Order",
+					"description": "Order used to pay fees",
+					"x-nullable": true
+				},
+				"fills": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MarketQuoteFill"
+					},
+					"description": "Collection of fills"
 				}
 			},
 			"required": [
 				"id",
-				"fills",
+				"dateCreated",
+				"dateUpdated",
 				"salt",
 				"hex",
-				"taker",
-				"tokenPair",
+				"takerAddress",
 				"price",
 				"takerAmount",
 				"makerAmount",
-				"takerAssetAddress"
+				"takerAssetAddress",
+				"expiration",
+				"feeTokenSymbol",
+				"feeAmount",
+				"networkFeeAmount",
+				"state",
+				"fills"
 			],
 			"type": "object"
 		},
@@ -1385,54 +1427,8 @@
 		},
 		"IMarketOrderQuote": {
 			"properties": {
-				"id": {
-					"type": "number",
-					"format": "double",
-					"description": "Unique quote identifier"
-				},
-				"fills": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/IExtendedOrderFill"
-					},
-					"description": "Collection of fills"
-				},
-				"salt": {
-					"type": "string",
-					"description": "Unique salt"
-				},
-				"hex": {
-					"type": "string",
-					"description": "Pre-calculated hex to sign"
-				},
-				"taker": {
-					"type": "string",
-					"description": "Order taker"
-				},
-				"feeData": {
-					"$ref": "#/definitions/IFeeData",
-					"description": "Contains information regarding any applicable fees",
-					"x-nullable": true
-				},
-				"tokenPair": {
-					"$ref": "#/definitions/ITokenPair",
-					"description": "Trade token pair"
-				},
-				"price": {
-					"type": "string",
-					"description": "Computed average price"
-				},
-				"takerAmount": {
-					"type": "string",
-					"description": "Total taker amount"
-				},
-				"makerAmount": {
-					"type": "string",
-					"description": "Total maker amount"
-				},
-				"takerAssetAddress": {
-					"type": "string",
-					"description": "Address of taker token"
+				"quote": {
+					"$ref": "#/definitions/MarketQuote"
 				},
 				"isPartial": {
 					"type": "boolean",
@@ -1440,16 +1436,7 @@
 				}
 			},
 			"required": [
-				"id",
-				"fills",
-				"salt",
-				"hex",
-				"taker",
-				"tokenPair",
-				"price",
-				"takerAmount",
-				"makerAmount",
-				"takerAssetAddress",
+				"quote",
 				"isPartial"
 			],
 			"type": "object"
@@ -1899,6 +1886,28 @@
 					}
 				},
 				"description": "Determine if app is in maintenance mode",
+				"tags": [
+					"Networks"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/networks/bulk_token_contract": {
+			"get": {
+				"operationId": "GetBulkTokenContract",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"description": "Get contract address for bulk token utility contract",
 				"tags": [
 					"Networks"
 				],
@@ -2503,7 +2512,7 @@
 					"200": {
 						"description": "Ok",
 						"schema": {
-							"$ref": "#/definitions/IFillQuote"
+							"$ref": "#/definitions/MarketQuote"
 						}
 					}
 				},

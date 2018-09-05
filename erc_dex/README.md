@@ -71,6 +71,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AggregatedOrdersApi* | [**get_aggregated_orders**](docs/AggregatedOrdersApi.md#get_aggregated_orders) | **GET** /aggregated_orders | 
 *AssetPairsApi* | [**get_asset_pairs**](docs/AssetPairsApi.md#get_asset_pairs) | **GET** /asset_pairs | 
+*NetworksApi* | [**get_bulk_token_contract**](docs/NetworksApi.md#get_bulk_token_contract) | **GET** /networks/bulk_token_contract | 
 *NetworksApi* | [**get_supported_network**](docs/NetworksApi.md#get_supported_network) | **GET** /networks | 
 *NetworksApi* | [**is_maintenance**](docs/NetworksApi.md#is_maintenance) | **GET** /networks/maintenance | 
 *NewsApi* | [**get_crypto_panic_news**](docs/NewsApi.md#get_crypto_panic_news) | **GET** /news/cryptopanic/{symbol} | 
@@ -107,10 +108,7 @@ Class | Method | HTTP request | Description
  - [ICancelOrdersRequest](docs/ICancelOrdersRequest.md)
  - [ICryptoPanicPostsResponse](docs/ICryptoPanicPostsResponse.md)
  - [ICurrency](docs/ICurrency.md)
- - [IExtendedOrderFill](docs/IExtendedOrderFill.md)
- - [IFeeData](docs/IFeeData.md)
  - [IFeeRecipientsResponse](docs/IFeeRecipientsResponse.md)
- - [IFillQuote](docs/IFillQuote.md)
  - [IFillRequest](docs/IFillRequest.md)
  - [IGetAssetPairsResponse](docs/IGetAssetPairsResponse.md)
  - [IGetMarketOrderQuoteByPercentageRequest](docs/IGetMarketOrderQuoteByPercentageRequest.md)
@@ -140,6 +138,8 @@ Class | Method | HTTP request | Description
  - [ITokenTicker](docs/ITokenTicker.md)
  - [ITradingViewLog](docs/ITradingViewLog.md)
  - [IVotes](docs/IVotes.md)
+ - [MarketQuote](docs/MarketQuote.md)
+ - [MarketQuoteFill](docs/MarketQuoteFill.md)
  - [NewsItem](docs/NewsItem.md)
  - [Notification](docs/Notification.md)
  - [Order](docs/Order.md)

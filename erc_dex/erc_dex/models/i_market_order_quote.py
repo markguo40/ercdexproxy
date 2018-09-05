@@ -16,9 +16,7 @@ import re  # noqa: F401
 
 import six
 
-from erc_dex.models.i_extended_order_fill import IExtendedOrderFill  # noqa: F401,E501
-from erc_dex.models.i_fee_data import IFeeData  # noqa: F401,E501
-from erc_dex.models.i_token_pair import ITokenPair  # noqa: F401,E501
+from erc_dex.models.market_quote import MarketQuote  # noqa: F401,E501
 
 
 class IMarketOrderQuote(object):
@@ -35,338 +33,47 @@ class IMarketOrderQuote(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'id': 'float',
-        'fills': 'list[IExtendedOrderFill]',
-        'salt': 'str',
-        'hex': 'str',
-        'taker': 'str',
-        'fee_data': 'IFeeData',
-        'token_pair': 'ITokenPair',
-        'price': 'str',
-        'taker_amount': 'str',
-        'maker_amount': 'str',
-        'taker_asset_address': 'str',
+        'quote': 'MarketQuote',
         'is_partial': 'bool'
     }
 
     attribute_map = {
-        'id': 'id',
-        'fills': 'fills',
-        'salt': 'salt',
-        'hex': 'hex',
-        'taker': 'taker',
-        'fee_data': 'feeData',
-        'token_pair': 'tokenPair',
-        'price': 'price',
-        'taker_amount': 'takerAmount',
-        'maker_amount': 'makerAmount',
-        'taker_asset_address': 'takerAssetAddress',
+        'quote': 'quote',
         'is_partial': 'isPartial'
     }
 
-    def __init__(self, id=None, fills=None, salt=None, hex=None, taker=None, fee_data=None, token_pair=None, price=None, taker_amount=None, maker_amount=None, taker_asset_address=None, is_partial=None):  # noqa: E501
+    def __init__(self, quote=None, is_partial=None):  # noqa: E501
         """IMarketOrderQuote - a model defined in Swagger"""  # noqa: E501
 
-        self._id = None
-        self._fills = None
-        self._salt = None
-        self._hex = None
-        self._taker = None
-        self._fee_data = None
-        self._token_pair = None
-        self._price = None
-        self._taker_amount = None
-        self._maker_amount = None
-        self._taker_asset_address = None
+        self._quote = None
         self._is_partial = None
         self.discriminator = None
 
-        self.id = id
-        self.fills = fills
-        self.salt = salt
-        self.hex = hex
-        self.taker = taker
-        if fee_data is not None:
-            self.fee_data = fee_data
-        self.token_pair = token_pair
-        self.price = price
-        self.taker_amount = taker_amount
-        self.maker_amount = maker_amount
-        self.taker_asset_address = taker_asset_address
+        self.quote = quote
         self.is_partial = is_partial
 
     @property
-    def id(self):
-        """Gets the id of this IMarketOrderQuote.  # noqa: E501
+    def quote(self):
+        """Gets the quote of this IMarketOrderQuote.  # noqa: E501
 
-        Unique quote identifier  # noqa: E501
 
-        :return: The id of this IMarketOrderQuote.  # noqa: E501
-        :rtype: float
+        :return: The quote of this IMarketOrderQuote.  # noqa: E501
+        :rtype: MarketQuote
         """
-        return self._id
+        return self._quote
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this IMarketOrderQuote.
+    @quote.setter
+    def quote(self, quote):
+        """Sets the quote of this IMarketOrderQuote.
 
-        Unique quote identifier  # noqa: E501
 
-        :param id: The id of this IMarketOrderQuote.  # noqa: E501
-        :type: float
+        :param quote: The quote of this IMarketOrderQuote.  # noqa: E501
+        :type: MarketQuote
         """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if quote is None:
+            raise ValueError("Invalid value for `quote`, must not be `None`")  # noqa: E501
 
-        self._id = id
-
-    @property
-    def fills(self):
-        """Gets the fills of this IMarketOrderQuote.  # noqa: E501
-
-        Collection of fills  # noqa: E501
-
-        :return: The fills of this IMarketOrderQuote.  # noqa: E501
-        :rtype: list[IExtendedOrderFill]
-        """
-        return self._fills
-
-    @fills.setter
-    def fills(self, fills):
-        """Sets the fills of this IMarketOrderQuote.
-
-        Collection of fills  # noqa: E501
-
-        :param fills: The fills of this IMarketOrderQuote.  # noqa: E501
-        :type: list[IExtendedOrderFill]
-        """
-        if fills is None:
-            raise ValueError("Invalid value for `fills`, must not be `None`")  # noqa: E501
-
-        self._fills = fills
-
-    @property
-    def salt(self):
-        """Gets the salt of this IMarketOrderQuote.  # noqa: E501
-
-        Unique salt  # noqa: E501
-
-        :return: The salt of this IMarketOrderQuote.  # noqa: E501
-        :rtype: str
-        """
-        return self._salt
-
-    @salt.setter
-    def salt(self, salt):
-        """Sets the salt of this IMarketOrderQuote.
-
-        Unique salt  # noqa: E501
-
-        :param salt: The salt of this IMarketOrderQuote.  # noqa: E501
-        :type: str
-        """
-        if salt is None:
-            raise ValueError("Invalid value for `salt`, must not be `None`")  # noqa: E501
-
-        self._salt = salt
-
-    @property
-    def hex(self):
-        """Gets the hex of this IMarketOrderQuote.  # noqa: E501
-
-        Pre-calculated hex to sign  # noqa: E501
-
-        :return: The hex of this IMarketOrderQuote.  # noqa: E501
-        :rtype: str
-        """
-        return self._hex
-
-    @hex.setter
-    def hex(self, hex):
-        """Sets the hex of this IMarketOrderQuote.
-
-        Pre-calculated hex to sign  # noqa: E501
-
-        :param hex: The hex of this IMarketOrderQuote.  # noqa: E501
-        :type: str
-        """
-        if hex is None:
-            raise ValueError("Invalid value for `hex`, must not be `None`")  # noqa: E501
-
-        self._hex = hex
-
-    @property
-    def taker(self):
-        """Gets the taker of this IMarketOrderQuote.  # noqa: E501
-
-        Order taker  # noqa: E501
-
-        :return: The taker of this IMarketOrderQuote.  # noqa: E501
-        :rtype: str
-        """
-        return self._taker
-
-    @taker.setter
-    def taker(self, taker):
-        """Sets the taker of this IMarketOrderQuote.
-
-        Order taker  # noqa: E501
-
-        :param taker: The taker of this IMarketOrderQuote.  # noqa: E501
-        :type: str
-        """
-        if taker is None:
-            raise ValueError("Invalid value for `taker`, must not be `None`")  # noqa: E501
-
-        self._taker = taker
-
-    @property
-    def fee_data(self):
-        """Gets the fee_data of this IMarketOrderQuote.  # noqa: E501
-
-        Contains information regarding any applicable fees  # noqa: E501
-
-        :return: The fee_data of this IMarketOrderQuote.  # noqa: E501
-        :rtype: IFeeData
-        """
-        return self._fee_data
-
-    @fee_data.setter
-    def fee_data(self, fee_data):
-        """Sets the fee_data of this IMarketOrderQuote.
-
-        Contains information regarding any applicable fees  # noqa: E501
-
-        :param fee_data: The fee_data of this IMarketOrderQuote.  # noqa: E501
-        :type: IFeeData
-        """
-
-        self._fee_data = fee_data
-
-    @property
-    def token_pair(self):
-        """Gets the token_pair of this IMarketOrderQuote.  # noqa: E501
-
-        Trade token pair  # noqa: E501
-
-        :return: The token_pair of this IMarketOrderQuote.  # noqa: E501
-        :rtype: ITokenPair
-        """
-        return self._token_pair
-
-    @token_pair.setter
-    def token_pair(self, token_pair):
-        """Sets the token_pair of this IMarketOrderQuote.
-
-        Trade token pair  # noqa: E501
-
-        :param token_pair: The token_pair of this IMarketOrderQuote.  # noqa: E501
-        :type: ITokenPair
-        """
-        if token_pair is None:
-            raise ValueError("Invalid value for `token_pair`, must not be `None`")  # noqa: E501
-
-        self._token_pair = token_pair
-
-    @property
-    def price(self):
-        """Gets the price of this IMarketOrderQuote.  # noqa: E501
-
-        Computed average price  # noqa: E501
-
-        :return: The price of this IMarketOrderQuote.  # noqa: E501
-        :rtype: str
-        """
-        return self._price
-
-    @price.setter
-    def price(self, price):
-        """Sets the price of this IMarketOrderQuote.
-
-        Computed average price  # noqa: E501
-
-        :param price: The price of this IMarketOrderQuote.  # noqa: E501
-        :type: str
-        """
-        if price is None:
-            raise ValueError("Invalid value for `price`, must not be `None`")  # noqa: E501
-
-        self._price = price
-
-    @property
-    def taker_amount(self):
-        """Gets the taker_amount of this IMarketOrderQuote.  # noqa: E501
-
-        Total taker amount  # noqa: E501
-
-        :return: The taker_amount of this IMarketOrderQuote.  # noqa: E501
-        :rtype: str
-        """
-        return self._taker_amount
-
-    @taker_amount.setter
-    def taker_amount(self, taker_amount):
-        """Sets the taker_amount of this IMarketOrderQuote.
-
-        Total taker amount  # noqa: E501
-
-        :param taker_amount: The taker_amount of this IMarketOrderQuote.  # noqa: E501
-        :type: str
-        """
-        if taker_amount is None:
-            raise ValueError("Invalid value for `taker_amount`, must not be `None`")  # noqa: E501
-
-        self._taker_amount = taker_amount
-
-    @property
-    def maker_amount(self):
-        """Gets the maker_amount of this IMarketOrderQuote.  # noqa: E501
-
-        Total maker amount  # noqa: E501
-
-        :return: The maker_amount of this IMarketOrderQuote.  # noqa: E501
-        :rtype: str
-        """
-        return self._maker_amount
-
-    @maker_amount.setter
-    def maker_amount(self, maker_amount):
-        """Sets the maker_amount of this IMarketOrderQuote.
-
-        Total maker amount  # noqa: E501
-
-        :param maker_amount: The maker_amount of this IMarketOrderQuote.  # noqa: E501
-        :type: str
-        """
-        if maker_amount is None:
-            raise ValueError("Invalid value for `maker_amount`, must not be `None`")  # noqa: E501
-
-        self._maker_amount = maker_amount
-
-    @property
-    def taker_asset_address(self):
-        """Gets the taker_asset_address of this IMarketOrderQuote.  # noqa: E501
-
-        Address of taker token  # noqa: E501
-
-        :return: The taker_asset_address of this IMarketOrderQuote.  # noqa: E501
-        :rtype: str
-        """
-        return self._taker_asset_address
-
-    @taker_asset_address.setter
-    def taker_asset_address(self, taker_asset_address):
-        """Sets the taker_asset_address of this IMarketOrderQuote.
-
-        Address of taker token  # noqa: E501
-
-        :param taker_asset_address: The taker_asset_address of this IMarketOrderQuote.  # noqa: E501
-        :type: str
-        """
-        if taker_asset_address is None:
-            raise ValueError("Invalid value for `taker_asset_address`, must not be `None`")  # noqa: E501
-
-        self._taker_asset_address = taker_asset_address
+        self._quote = quote
 
     @property
     def is_partial(self):
