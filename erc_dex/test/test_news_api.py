@@ -35,6 +35,12 @@ class TestNewsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_erc_dex_news(self):
+        """Test case for get_erc_dex_news
+
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
