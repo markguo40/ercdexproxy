@@ -8,8 +8,11 @@ Name | Type | Description | Notes
 **date_updated** | **datetime** | Date of updated | 
 **order_id** | **float** |  | 
 **receipt_id** | **float** |  | 
-**taker_amount** | **str** |  | 
 **maker_address** | **str** |  | 
+**side** | **str** |  | 
+**taker_amount** | **str** |  | 
+**maker_amount** | **str** |  | 
+**price** | **str** |  | 
 **is_fee_order** | **bool** |  | 
 **receipt** | [**FillReceipt**](FillReceipt.md) |  | [optional] 
 

@@ -1104,22 +1104,6 @@
 					],
 					"description": "Receipt status: success | error | pending"
 				},
-				"side": {
-					"type": "string",
-					"enum": [
-						"buy",
-						"sell"
-					]
-				},
-				"takerAmount": {
-					"type": "string"
-				},
-				"makerAmount": {
-					"type": "string"
-				},
-				"price": {
-					"type": "string"
-				},
 				"baseAssetAddress": {
 					"type": "string"
 				},
@@ -1130,12 +1114,6 @@
 					"type": "string"
 				},
 				"quoteAssetAddress": {
-					"type": "string"
-				},
-				"feeAmount": {
-					"type": "string"
-				},
-				"feeAssetAddress": {
 					"type": "string"
 				},
 				"logs": {
@@ -1153,16 +1131,10 @@
 				"txHash",
 				"taker",
 				"status",
-				"side",
-				"takerAmount",
-				"makerAmount",
-				"price",
 				"baseAssetAddress",
 				"baseSymbol",
 				"quoteSymbol",
-				"quoteAssetAddress",
-				"feeAmount",
-				"feeAssetAddress"
+				"quoteAssetAddress"
 			],
 			"type": "object"
 		},
@@ -1191,10 +1163,23 @@
 					"type": "number",
 					"format": "double"
 				},
+				"makerAddress": {
+					"type": "string"
+				},
+				"side": {
+					"type": "string",
+					"enum": [
+						"buy",
+						"sell"
+					]
+				},
 				"takerAmount": {
 					"type": "string"
 				},
-				"makerAddress": {
+				"makerAmount": {
+					"type": "string"
+				},
+				"price": {
 					"type": "string"
 				},
 				"isFeeOrder": {
@@ -1211,8 +1196,11 @@
 				"dateUpdated",
 				"orderId",
 				"receiptId",
-				"takerAmount",
 				"makerAddress",
+				"side",
+				"takerAmount",
+				"makerAmount",
+				"price",
 				"isFeeOrder"
 			],
 			"type": "object"

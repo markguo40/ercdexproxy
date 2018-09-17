@@ -39,16 +39,10 @@ class FillReceipt(object):
         'tx_hash': 'str',
         'taker': 'str',
         'status': 'str',
-        'side': 'str',
-        'taker_amount': 'str',
-        'maker_amount': 'str',
-        'price': 'str',
         'base_asset_address': 'str',
         'base_symbol': 'str',
         'quote_symbol': 'str',
         'quote_asset_address': 'str',
-        'fee_amount': 'str',
-        'fee_asset_address': 'str',
         'logs': 'list[FillReceiptLog]'
     }
 
@@ -59,20 +53,14 @@ class FillReceipt(object):
         'tx_hash': 'txHash',
         'taker': 'taker',
         'status': 'status',
-        'side': 'side',
-        'taker_amount': 'takerAmount',
-        'maker_amount': 'makerAmount',
-        'price': 'price',
         'base_asset_address': 'baseAssetAddress',
         'base_symbol': 'baseSymbol',
         'quote_symbol': 'quoteSymbol',
         'quote_asset_address': 'quoteAssetAddress',
-        'fee_amount': 'feeAmount',
-        'fee_asset_address': 'feeAssetAddress',
         'logs': 'logs'
     }
 
-    def __init__(self, id=None, date_created=None, date_updated=None, tx_hash=None, taker=None, status=None, side=None, taker_amount=None, maker_amount=None, price=None, base_asset_address=None, base_symbol=None, quote_symbol=None, quote_asset_address=None, fee_amount=None, fee_asset_address=None, logs=None):  # noqa: E501
+    def __init__(self, id=None, date_created=None, date_updated=None, tx_hash=None, taker=None, status=None, base_asset_address=None, base_symbol=None, quote_symbol=None, quote_asset_address=None, logs=None):  # noqa: E501
         """FillReceipt - a model defined in Swagger"""  # noqa: E501
 
         self._id = None
@@ -81,16 +69,10 @@ class FillReceipt(object):
         self._tx_hash = None
         self._taker = None
         self._status = None
-        self._side = None
-        self._taker_amount = None
-        self._maker_amount = None
-        self._price = None
         self._base_asset_address = None
         self._base_symbol = None
         self._quote_symbol = None
         self._quote_asset_address = None
-        self._fee_amount = None
-        self._fee_asset_address = None
         self._logs = None
         self.discriminator = None
 
@@ -100,16 +82,10 @@ class FillReceipt(object):
         self.tx_hash = tx_hash
         self.taker = taker
         self.status = status
-        self.side = side
-        self.taker_amount = taker_amount
-        self.maker_amount = maker_amount
-        self.price = price
         self.base_asset_address = base_asset_address
         self.base_symbol = base_symbol
         self.quote_symbol = quote_symbol
         self.quote_asset_address = quote_asset_address
-        self.fee_amount = fee_amount
-        self.fee_asset_address = fee_asset_address
         if logs is not None:
             self.logs = logs
 
@@ -266,104 +242,6 @@ class FillReceipt(object):
         self._status = status
 
     @property
-    def side(self):
-        """Gets the side of this FillReceipt.  # noqa: E501
-
-
-        :return: The side of this FillReceipt.  # noqa: E501
-        :rtype: str
-        """
-        return self._side
-
-    @side.setter
-    def side(self, side):
-        """Sets the side of this FillReceipt.
-
-
-        :param side: The side of this FillReceipt.  # noqa: E501
-        :type: str
-        """
-        if side is None:
-            raise ValueError("Invalid value for `side`, must not be `None`")  # noqa: E501
-        allowed_values = ["buy", "sell"]  # noqa: E501
-        if side not in allowed_values:
-            raise ValueError(
-                "Invalid value for `side` ({0}), must be one of {1}"  # noqa: E501
-                .format(side, allowed_values)
-            )
-
-        self._side = side
-
-    @property
-    def taker_amount(self):
-        """Gets the taker_amount of this FillReceipt.  # noqa: E501
-
-
-        :return: The taker_amount of this FillReceipt.  # noqa: E501
-        :rtype: str
-        """
-        return self._taker_amount
-
-    @taker_amount.setter
-    def taker_amount(self, taker_amount):
-        """Sets the taker_amount of this FillReceipt.
-
-
-        :param taker_amount: The taker_amount of this FillReceipt.  # noqa: E501
-        :type: str
-        """
-        if taker_amount is None:
-            raise ValueError("Invalid value for `taker_amount`, must not be `None`")  # noqa: E501
-
-        self._taker_amount = taker_amount
-
-    @property
-    def maker_amount(self):
-        """Gets the maker_amount of this FillReceipt.  # noqa: E501
-
-
-        :return: The maker_amount of this FillReceipt.  # noqa: E501
-        :rtype: str
-        """
-        return self._maker_amount
-
-    @maker_amount.setter
-    def maker_amount(self, maker_amount):
-        """Sets the maker_amount of this FillReceipt.
-
-
-        :param maker_amount: The maker_amount of this FillReceipt.  # noqa: E501
-        :type: str
-        """
-        if maker_amount is None:
-            raise ValueError("Invalid value for `maker_amount`, must not be `None`")  # noqa: E501
-
-        self._maker_amount = maker_amount
-
-    @property
-    def price(self):
-        """Gets the price of this FillReceipt.  # noqa: E501
-
-
-        :return: The price of this FillReceipt.  # noqa: E501
-        :rtype: str
-        """
-        return self._price
-
-    @price.setter
-    def price(self, price):
-        """Sets the price of this FillReceipt.
-
-
-        :param price: The price of this FillReceipt.  # noqa: E501
-        :type: str
-        """
-        if price is None:
-            raise ValueError("Invalid value for `price`, must not be `None`")  # noqa: E501
-
-        self._price = price
-
-    @property
     def base_asset_address(self):
         """Gets the base_asset_address of this FillReceipt.  # noqa: E501
 
@@ -454,52 +332,6 @@ class FillReceipt(object):
             raise ValueError("Invalid value for `quote_asset_address`, must not be `None`")  # noqa: E501
 
         self._quote_asset_address = quote_asset_address
-
-    @property
-    def fee_amount(self):
-        """Gets the fee_amount of this FillReceipt.  # noqa: E501
-
-
-        :return: The fee_amount of this FillReceipt.  # noqa: E501
-        :rtype: str
-        """
-        return self._fee_amount
-
-    @fee_amount.setter
-    def fee_amount(self, fee_amount):
-        """Sets the fee_amount of this FillReceipt.
-
-
-        :param fee_amount: The fee_amount of this FillReceipt.  # noqa: E501
-        :type: str
-        """
-        if fee_amount is None:
-            raise ValueError("Invalid value for `fee_amount`, must not be `None`")  # noqa: E501
-
-        self._fee_amount = fee_amount
-
-    @property
-    def fee_asset_address(self):
-        """Gets the fee_asset_address of this FillReceipt.  # noqa: E501
-
-
-        :return: The fee_asset_address of this FillReceipt.  # noqa: E501
-        :rtype: str
-        """
-        return self._fee_asset_address
-
-    @fee_asset_address.setter
-    def fee_asset_address(self, fee_asset_address):
-        """Sets the fee_asset_address of this FillReceipt.
-
-
-        :param fee_asset_address: The fee_asset_address of this FillReceipt.  # noqa: E501
-        :type: str
-        """
-        if fee_asset_address is None:
-            raise ValueError("Invalid value for `fee_asset_address`, must not be `None`")  # noqa: E501
-
-        self._fee_asset_address = fee_asset_address
 
     @property
     def logs(self):

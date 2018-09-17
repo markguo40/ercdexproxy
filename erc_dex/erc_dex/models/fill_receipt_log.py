@@ -38,8 +38,11 @@ class FillReceiptLog(object):
         'date_updated': 'datetime',
         'order_id': 'float',
         'receipt_id': 'float',
-        'taker_amount': 'str',
         'maker_address': 'str',
+        'side': 'str',
+        'taker_amount': 'str',
+        'maker_amount': 'str',
+        'price': 'str',
         'is_fee_order': 'bool',
         'receipt': 'FillReceipt'
     }
@@ -50,13 +53,16 @@ class FillReceiptLog(object):
         'date_updated': 'dateUpdated',
         'order_id': 'orderId',
         'receipt_id': 'receiptId',
-        'taker_amount': 'takerAmount',
         'maker_address': 'makerAddress',
+        'side': 'side',
+        'taker_amount': 'takerAmount',
+        'maker_amount': 'makerAmount',
+        'price': 'price',
         'is_fee_order': 'isFeeOrder',
         'receipt': 'receipt'
     }
 
-    def __init__(self, id=None, date_created=None, date_updated=None, order_id=None, receipt_id=None, taker_amount=None, maker_address=None, is_fee_order=None, receipt=None):  # noqa: E501
+    def __init__(self, id=None, date_created=None, date_updated=None, order_id=None, receipt_id=None, maker_address=None, side=None, taker_amount=None, maker_amount=None, price=None, is_fee_order=None, receipt=None):  # noqa: E501
         """FillReceiptLog - a model defined in Swagger"""  # noqa: E501
 
         self._id = None
@@ -64,8 +70,11 @@ class FillReceiptLog(object):
         self._date_updated = None
         self._order_id = None
         self._receipt_id = None
-        self._taker_amount = None
         self._maker_address = None
+        self._side = None
+        self._taker_amount = None
+        self._maker_amount = None
+        self._price = None
         self._is_fee_order = None
         self._receipt = None
         self.discriminator = None
@@ -75,8 +84,11 @@ class FillReceiptLog(object):
         self.date_updated = date_updated
         self.order_id = order_id
         self.receipt_id = receipt_id
-        self.taker_amount = taker_amount
         self.maker_address = maker_address
+        self.side = side
+        self.taker_amount = taker_amount
+        self.maker_amount = maker_amount
+        self.price = price
         self.is_fee_order = is_fee_order
         if receipt is not None:
             self.receipt = receipt
@@ -203,6 +215,58 @@ class FillReceiptLog(object):
         self._receipt_id = receipt_id
 
     @property
+    def maker_address(self):
+        """Gets the maker_address of this FillReceiptLog.  # noqa: E501
+
+
+        :return: The maker_address of this FillReceiptLog.  # noqa: E501
+        :rtype: str
+        """
+        return self._maker_address
+
+    @maker_address.setter
+    def maker_address(self, maker_address):
+        """Sets the maker_address of this FillReceiptLog.
+
+
+        :param maker_address: The maker_address of this FillReceiptLog.  # noqa: E501
+        :type: str
+        """
+        if maker_address is None:
+            raise ValueError("Invalid value for `maker_address`, must not be `None`")  # noqa: E501
+
+        self._maker_address = maker_address
+
+    @property
+    def side(self):
+        """Gets the side of this FillReceiptLog.  # noqa: E501
+
+
+        :return: The side of this FillReceiptLog.  # noqa: E501
+        :rtype: str
+        """
+        return self._side
+
+    @side.setter
+    def side(self, side):
+        """Sets the side of this FillReceiptLog.
+
+
+        :param side: The side of this FillReceiptLog.  # noqa: E501
+        :type: str
+        """
+        if side is None:
+            raise ValueError("Invalid value for `side`, must not be `None`")  # noqa: E501
+        allowed_values = ["buy", "sell"]  # noqa: E501
+        if side not in allowed_values:
+            raise ValueError(
+                "Invalid value for `side` ({0}), must be one of {1}"  # noqa: E501
+                .format(side, allowed_values)
+            )
+
+        self._side = side
+
+    @property
     def taker_amount(self):
         """Gets the taker_amount of this FillReceiptLog.  # noqa: E501
 
@@ -226,27 +290,50 @@ class FillReceiptLog(object):
         self._taker_amount = taker_amount
 
     @property
-    def maker_address(self):
-        """Gets the maker_address of this FillReceiptLog.  # noqa: E501
+    def maker_amount(self):
+        """Gets the maker_amount of this FillReceiptLog.  # noqa: E501
 
 
-        :return: The maker_address of this FillReceiptLog.  # noqa: E501
+        :return: The maker_amount of this FillReceiptLog.  # noqa: E501
         :rtype: str
         """
-        return self._maker_address
+        return self._maker_amount
 
-    @maker_address.setter
-    def maker_address(self, maker_address):
-        """Sets the maker_address of this FillReceiptLog.
+    @maker_amount.setter
+    def maker_amount(self, maker_amount):
+        """Sets the maker_amount of this FillReceiptLog.
 
 
-        :param maker_address: The maker_address of this FillReceiptLog.  # noqa: E501
+        :param maker_amount: The maker_amount of this FillReceiptLog.  # noqa: E501
         :type: str
         """
-        if maker_address is None:
-            raise ValueError("Invalid value for `maker_address`, must not be `None`")  # noqa: E501
+        if maker_amount is None:
+            raise ValueError("Invalid value for `maker_amount`, must not be `None`")  # noqa: E501
 
-        self._maker_address = maker_address
+        self._maker_amount = maker_amount
+
+    @property
+    def price(self):
+        """Gets the price of this FillReceiptLog.  # noqa: E501
+
+
+        :return: The price of this FillReceiptLog.  # noqa: E501
+        :rtype: str
+        """
+        return self._price
+
+    @price.setter
+    def price(self, price):
+        """Sets the price of this FillReceiptLog.
+
+
+        :param price: The price of this FillReceiptLog.  # noqa: E501
+        :type: str
+        """
+        if price is None:
+            raise ValueError("Invalid value for `price`, must not be `None`")  # noqa: E501
+
+        self._price = price
 
     @property
     def is_fee_order(self):
