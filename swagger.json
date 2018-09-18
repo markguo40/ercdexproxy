@@ -1,5 +1,5 @@
 {
-	"basePath": "/api/v1",
+	"basePath": "/api/v2",
 	"consumes": [
 		"application/json"
 	],
@@ -2001,7 +2001,7 @@
 				]
 			}
 		},
-		"/orders": {
+		"/order": {
 			"post": {
 				"operationId": "CreateOrder",
 				"produces": [
@@ -2030,7 +2030,9 @@
 						}
 					}
 				]
-			},
+			}
+		},
+		"/orders": {
 			"get": {
 				"operationId": "GetOrders",
 				"produces": [

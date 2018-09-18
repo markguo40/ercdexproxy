@@ -1,6 +1,6 @@
 # erc_dex.NetworksApi
 
-All URIs are relative to *https://app.ercdex.com/api/v1*
+All URIs are relative to *https://app.ercdex.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

@@ -1,11 +1,11 @@
 # erc_dex.OrdersApi
 
-All URIs are relative to *https://app.ercdex.com/api/v1*
+All URIs are relative to *https://app.ercdex.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**cancel_orders**](OrdersApi.md#cancel_orders) | **POST** /orders/cancel | 
-[**create_order**](OrdersApi.md#create_order) | **POST** /orders | 
+[**create_order**](OrdersApi.md#create_order) | **POST** /order | 
 [**get_fee_recipients**](OrdersApi.md#get_fee_recipients) | **GET** /fee_recipients | 
 [**get_order_by_hash**](OrdersApi.md#get_order_by_hash) | **GET** /order/{orderHash} | 
 [**get_order_config**](OrdersApi.md#get_order_config) | **GET** /order_config | 

@@ -65,7 +65,7 @@ except ApiException as e:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://app.ercdex.com/api/v1*
+All URIs are relative to *https://app.ercdex.com/api/v2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -78,7 +78,7 @@ Class | Method | HTTP request | Description
 *NewsApi* | [**get_erc_dex_news**](docs/NewsApi.md#get_erc_dex_news) | **GET** /news/ercdex | 
 *NotificationsApi* | [**get_notifications**](docs/NotificationsApi.md#get_notifications) | **GET** /notifications | 
 *OrdersApi* | [**cancel_orders**](docs/OrdersApi.md#cancel_orders) | **POST** /orders/cancel | 
-*OrdersApi* | [**create_order**](docs/OrdersApi.md#create_order) | **POST** /orders | 
+*OrdersApi* | [**create_order**](docs/OrdersApi.md#create_order) | **POST** /order | 
 *OrdersApi* | [**get_fee_recipients**](docs/OrdersApi.md#get_fee_recipients) | **GET** /fee_recipients | 
 *OrdersApi* | [**get_order_by_hash**](docs/OrdersApi.md#get_order_by_hash) | **GET** /order/{orderHash} | 
 *OrdersApi* | [**get_order_config**](docs/OrdersApi.md#get_order_config) | **GET** /order_config | 
