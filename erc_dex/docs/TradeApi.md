@@ -201,7 +201,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_receipts**
-> IGetReceiptsResponse get_receipts(page=page, per_page=per_page, taker_address=taker_address, pair=pair)
+> IGetReceiptsResponse get_receipts(page=page, per_page=per_page, taker_address=taker_address, pair=pair, maker_address=maker_address, order_id=order_id)
 
 
 
@@ -219,9 +219,11 @@ page = 1 # float | Page (optional) (default to 1)
 per_page = 100 # float | Page size (optional) (default to 100)
 taker_address = 'taker_address_example' # str | Optionally provide wallet address of receipt recipient (optional)
 pair = 'pair_example' # str | The token pair in the format BASE/QUOTE, e.g. ZRX/WETH (optional)
+maker_address = 'maker_address_example' # str | Optionally provide wallet address of order maker (optional)
+order_id = 1.2 # float |  (optional)
 
 try:
-    api_response = api_instance.get_receipts(page=page, per_page=per_page, taker_address=taker_address, pair=pair)
+    api_response = api_instance.get_receipts(page=page, per_page=per_page, taker_address=taker_address, pair=pair, maker_address=maker_address, order_id=order_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling TradeApi->get_receipts: %s\n" % e)
@@ -235,6 +237,8 @@ Name | Type | Description  | Notes
  **per_page** | **float**| Page size | [optional] [default to 100]
  **taker_address** | **str**| Optionally provide wallet address of receipt recipient | [optional] 
  **pair** | **str**| The token pair in the format BASE/QUOTE, e.g. ZRX/WETH | [optional] 
+ **maker_address** | **str**| Optionally provide wallet address of order maker | [optional] 
+ **order_id** | **float**|  | [optional] 
 
 ### Return type
 

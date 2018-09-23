@@ -34,29 +34,33 @@ class IToken(object):
         'name': 'str',
         'address': 'str',
         'symbol': 'str',
-        'decimals': 'float'
+        'decimals': 'float',
+        'data': 'str'
     }
 
     attribute_map = {
         'name': 'name',
         'address': 'address',
         'symbol': 'symbol',
-        'decimals': 'decimals'
+        'decimals': 'decimals',
+        'data': 'data'
     }
 
-    def __init__(self, name=None, address=None, symbol=None, decimals=None):  # noqa: E501
+    def __init__(self, name=None, address=None, symbol=None, decimals=None, data=None):  # noqa: E501
         """IToken - a model defined in Swagger"""  # noqa: E501
 
         self._name = None
         self._address = None
         self._symbol = None
         self._decimals = None
+        self._data = None
         self.discriminator = None
 
         self.name = name
         self.address = address
         self.symbol = symbol
         self.decimals = decimals
+        self.data = data
 
     @property
     def name(self):
@@ -149,6 +153,29 @@ class IToken(object):
             raise ValueError("Invalid value for `decimals`, must not be `None`")  # noqa: E501
 
         self._decimals = decimals
+
+    @property
+    def data(self):
+        """Gets the data of this IToken.  # noqa: E501
+
+
+        :return: The data of this IToken.  # noqa: E501
+        :rtype: str
+        """
+        return self._data
+
+    @data.setter
+    def data(self, data):
+        """Sets the data of this IToken.
+
+
+        :param data: The data of this IToken.  # noqa: E501
+        :type: str
+        """
+        if data is None:
+            raise ValueError("Invalid value for `data`, must not be `None`")  # noqa: E501
+
+        self._data = data
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -442,6 +442,8 @@ class TradeApi(object):
         :param float per_page: Page size
         :param str taker_address: Optionally provide wallet address of receipt recipient
         :param str pair: The token pair in the format BASE/QUOTE, e.g. ZRX/WETH
+        :param str maker_address: Optionally provide wallet address of order maker
+        :param float order_id:
         :return: IGetReceiptsResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -466,12 +468,14 @@ class TradeApi(object):
         :param float per_page: Page size
         :param str taker_address: Optionally provide wallet address of receipt recipient
         :param str pair: The token pair in the format BASE/QUOTE, e.g. ZRX/WETH
+        :param str maker_address: Optionally provide wallet address of order maker
+        :param float order_id:
         :return: IGetReceiptsResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['page', 'per_page', 'taker_address', 'pair']  # noqa: E501
+        all_params = ['page', 'per_page', 'taker_address', 'pair', 'maker_address', 'order_id']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -500,6 +504,10 @@ class TradeApi(object):
             query_params.append(('taker_address', params['taker_address']))  # noqa: E501
         if 'pair' in params:
             query_params.append(('pair', params['pair']))  # noqa: E501
+        if 'maker_address' in params:
+            query_params.append(('maker_address', params['maker_address']))  # noqa: E501
+        if 'order_id' in params:
+            query_params.append(('orderId', params['order_id']))  # noqa: E501
 
         header_params = {}
 

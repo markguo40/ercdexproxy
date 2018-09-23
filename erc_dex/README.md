@@ -81,6 +81,7 @@ Class | Method | HTTP request | Description
 *OrdersApi* | [**create_order**](docs/OrdersApi.md#create_order) | **POST** /order | 
 *OrdersApi* | [**get_fee_recipients**](docs/OrdersApi.md#get_fee_recipients) | **GET** /fee_recipients | 
 *OrdersApi* | [**get_order_by_hash**](docs/OrdersApi.md#get_order_by_hash) | **GET** /order/{orderHash} | 
+*OrdersApi* | [**get_order_by_id**](docs/OrdersApi.md#get_order_by_id) | **GET** /order | 
 *OrdersApi* | [**get_order_config**](docs/OrdersApi.md#get_order_config) | **GET** /order_config | 
 *OrdersApi* | [**get_orderbook**](docs/OrdersApi.md#get_orderbook) | **GET** /orderbook | 
 *OrdersApi* | [**get_orders**](docs/OrdersApi.md#get_orders) | **GET** /orders | 

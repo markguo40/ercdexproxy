@@ -67,13 +67,17 @@
 				"decimals": {
 					"type": "number",
 					"format": "double"
+				},
+				"data": {
+					"type": "string"
 				}
 			},
 			"required": [
 				"name",
 				"address",
 				"symbol",
-				"decimals"
+				"decimals",
+				"data"
 			],
 			"type": "object"
 		},
@@ -2030,6 +2034,34 @@
 						}
 					}
 				]
+			},
+			"get": {
+				"operationId": "GetOrderById",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/IOrderData"
+						}
+					}
+				},
+				"description": "Get a single order by ID",
+				"tags": [
+					"Orders"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "orderId",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					}
+				]
 			}
 		},
 		"/orders": {
@@ -2665,6 +2697,20 @@
 						"name": "pair",
 						"required": false,
 						"type": "string"
+					},
+					{
+						"description": "Optionally provide wallet address of order maker",
+						"in": "query",
+						"name": "maker_address",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"in": "query",
+						"name": "orderId",
+						"required": false,
+						"format": "double",
+						"type": "number"
 					}
 				]
 			}

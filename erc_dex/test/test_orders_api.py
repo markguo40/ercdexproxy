@@ -53,6 +53,12 @@ class TestOrdersApi(unittest.TestCase):
         """
         pass
 
+    def test_get_order_by_id(self):
+        """Test case for get_order_by_id
+
+        """
+        pass
+
     def test_get_order_config(self):
         """Test case for get_order_config
 
