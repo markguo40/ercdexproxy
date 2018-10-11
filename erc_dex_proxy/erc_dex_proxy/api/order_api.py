@@ -126,7 +126,7 @@ class OrderApi(object):
             files=local_var_files,
             response_type='str',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -225,7 +225,7 @@ class OrderApi(object):
             files=local_var_files,
             response_type='IOrder',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -246,7 +246,7 @@ class OrderApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_'):
             return self.fill_order_with_http_info(request, **kwargs)  # noqa: E501
         else:
             (data) = self.fill_order_with_http_info(request, **kwargs)  # noqa: E501
@@ -268,7 +268,7 @@ class OrderApi(object):
         """
 
         all_params = ['request']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -322,7 +322,7 @@ class OrderApi(object):
             files=local_var_files,
             response_type='IFillReceipt',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_=params.get('async_'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
