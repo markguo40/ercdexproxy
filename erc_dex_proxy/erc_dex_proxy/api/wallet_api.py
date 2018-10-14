@@ -501,3 +501,114 @@ class WalletApi(object):
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
+
+    def sendtoken(self, tokenAddress, amount, to, **kwargs):  # noqa: E501
+        """wrap_ether  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.wrap_ether(amount, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str amount: (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.sendtoken_with_http_info(tokenAddress, amount, to, **kwargs)  # noqa: E501
+        else:
+            (data) = self.sendtoken_with_http_info(tokenAddress, amount, to, **kwargs)  # noqa: E501
+            return data
+
+    def sendtoken_with_http_info(self, tokenAddress, amount, to, **kwargs):  # noqa: E501
+        """wrap_ether  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.wrap_ether_with_http_info(amount, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str amount: (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['tokenAddress', 'amount', 'to']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method sendtoken" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'amount' is set
+        if ('amount' not in params or
+                params['amount'] is None):
+            raise ValueError("Missing the required parameter `amount` when calling `send token`")  # noqa: E501
+
+        if ('tokenAddress' not in params or
+                params['tokenAddress'] is None):
+            raise ValueError("Missing the required parameter `tokenAddress` when calling `send token`")  # noqa: E501
+
+        if ('to' not in params or
+                params['to'] is None):
+            raise ValueError("Missing the required parameter `to` when calling `send token`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'amount' in params:
+            query_params.append(('amount', params['amount']))  # noqa: E501
+
+        if 'tokenAddress' in params:
+            query_params.append(('tokenAddress', params['tokenAddress']))  # noqa: E501
+
+        if 'to' in params:
+            query_params.append(('to', params['to']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/wallet/sendtoken', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='str',  # noqa: E501
+            auth_settings=auth_settings,
+            async_=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
